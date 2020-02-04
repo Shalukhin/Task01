@@ -1,7 +1,6 @@
 package entity.tour;
 
 import java.math.BigDecimal;
-import util.TypeOfTour;
 
 public class Shopping extends Tour {	
 	
@@ -11,7 +10,7 @@ public class Shopping extends Tour {
 		super();
 	}	
 	
-	public Shopping(TypeOfTour type, int id, int amountOfDays, String transportation, boolean food, BigDecimal price,
+	public Shopping(TypeOfTour type, int id, int amountOfDays, TypeOfTransportation transportation, boolean food, BigDecimal price,
 			String shop) {
 		super(type, id, amountOfDays, transportation, food, price);
 		this.shop = shop;

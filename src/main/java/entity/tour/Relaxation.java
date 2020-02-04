@@ -2,8 +2,6 @@ package entity.tour;
 
 import java.math.BigDecimal;
 
-import util.TypeOfTour;
-
 public class Relaxation extends Tour {
 	
 	private String country = "";
@@ -12,7 +10,7 @@ public class Relaxation extends Tour {
 		super();
 	}	
 
-	public Relaxation(TypeOfTour type, int id, int amountOfDays, String transportation, boolean food, BigDecimal price,
+	public Relaxation(TypeOfTour type, int id, int amountOfDays, TypeOfTransportation transportation, boolean food, BigDecimal price,
 			String country) {
 		super(type, id, amountOfDays, transportation, food, price);
 		this.country = country;

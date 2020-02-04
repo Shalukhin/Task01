@@ -2,8 +2,6 @@ package entity.tour;
 
 import java.math.BigDecimal;
 
-import util.TypeOfTour;
-
 public class Tour {
 
 	private TypeOfTour type;
@@ -11,15 +9,16 @@ public class Tour {
 	private int id;
 		
 	private int amountOfDays;
-	private String transportation;
+	private TypeOfTransportation transportation;
 	private boolean food;
 	private BigDecimal price;
 	
 	public Tour() {
 		super();
 	}
-
-	public Tour(TypeOfTour type, int id, int amountOfDays, String transportation, boolean food, BigDecimal price) {
+		
+	public Tour(TypeOfTour type, int id, int amountOfDays, TypeOfTransportation transportation, boolean food,
+			BigDecimal price) {
 		super();
 		this.type = type;
 		this.id = id;
@@ -28,57 +27,70 @@ public class Tour {
 		this.food = food;
 		this.price = price;
 	}
-
+	
+	
 	public TypeOfTour getType() {
 		return type;
 	}
+
 
 	public void setType(TypeOfTour type) {
 		this.type = type;
 	}
 
+
 	public int getId() {
 		return id;
 	}
+
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
+
 	public int getAmountOfDays() {
 		return amountOfDays;
 	}
+
 
 	public void setAmountOfDays(int amountOfDays) {
 		this.amountOfDays = amountOfDays;
 	}
 
-	public String getTransportation() {
+
+	public TypeOfTransportation getTransportation() {
 		return transportation;
 	}
 
-	public void setTransportation(String transportation) {
+
+	public void setTransportation(TypeOfTransportation transportation) {
 		this.transportation = transportation;
 	}
+
 
 	public boolean isFood() {
 		return food;
 	}
 
+
 	public void setFood(boolean food) {
 		this.food = food;
 	}
+
 
 	public BigDecimal getPrice() {
 		return price;
 	}
 
+
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-	
+
+
 	public String receiveSpecificInfo() {
-		return "Специфической информации нет";
+		return "No specific info";
 	}
 
 	@Override
@@ -114,10 +126,7 @@ public class Tour {
 				return false;
 		} else if (!price.equals(other.price))
 			return false;
-		if (transportation == null) {
-			if (other.transportation != null)
-				return false;
-		} else if (!transportation.equals(other.transportation))
+		if (transportation != other.transportation)
 			return false;
 		if (type != other.type)
 			return false;
@@ -128,10 +137,6 @@ public class Tour {
 	public String toString() {
 		return "Tour [type=" + type + ", id=" + id + ", amountOfDays=" + amountOfDays + ", transportation="
 				+ transportation + ", food=" + food + ", price=" + price + "]";
-	}
-	
-	
-	
-	
+	}	
 
 }

@@ -2,8 +2,6 @@ package entity.tour;
 
 import java.math.BigDecimal;
 
-import util.TypeOfTour;
-
 public class Recovery extends Tour {
 	
 	private String illness = "";
@@ -12,7 +10,7 @@ public class Recovery extends Tour {
 		super();
 	}	
 		
-	public Recovery(TypeOfTour type, int id, int amountOfDays, String transportation, boolean food, BigDecimal price,
+	public Recovery(TypeOfTour type, int id, int amountOfDays, TypeOfTransportation transportation, boolean food, BigDecimal price,
 			String illness) {
 		super(type, id, amountOfDays, transportation, food, price);
 		this.illness = illness;

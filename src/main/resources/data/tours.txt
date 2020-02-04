@@ -1,6 +1,7 @@
 <tour>
 	<id>1</id>
 	<type>Cruise</type>
+	<transportation>sea</transportation>
 	<amountOfDays>12</amountOfDays>
 	<food>yes</food>
 	<price>2000</price>
@@ -9,6 +10,7 @@
 <tour>
 	<id>2</id>
 	<type>Excursion</type>
+	<transportation>bus</transportation>
 	<amountOfDays>2</amountOfDays>
 	<food>no</food>
 	<price>250</price>
@@ -17,6 +19,7 @@
 <tour>
 	<id>3</id>
 	<type>Recovery</type>
+	<transportation>air</transportation>
 	<amountOfDays>30</amountOfDays>
 	<food>yes</food>
 	<price>4000</price>
@@ -25,6 +28,7 @@
 <tour>
 	<id>4</id>
 	<type>Relaxation</type>
+	<transportation>real</transportation>
 	<amountOfDays>14</amountOfDays>
 	<food>yes</food>
 	<price>1500</price>
@@ -33,6 +37,7 @@
 <tour>
 	<id>5</id>
 	<type>Shopping</type>
+	<transportation>bus</transportation>
 	<amountOfDays>1</amountOfDays>
 	<food>no</food>
 	<price>100</price>

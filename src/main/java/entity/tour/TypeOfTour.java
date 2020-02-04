@@ -1,4 +1,4 @@
-package util;
+package entity.tour;
 
 public enum TypeOfTour {
 	CRUISE,
