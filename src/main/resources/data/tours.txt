@@ -1,0 +1,40 @@
+<tour>
+	<id>1</id>
+	<type>Cruise</type>
+	<amountOfDays>12</amountOfDays>
+	<food>yes</food>
+	<price>2000</price>
+	<routeOfCruise>Italy - Cyprus</routeOfCruise>
+<tour>
+<tour>
+	<id>2</id>
+	<type>Excursion</type>
+	<amountOfDays>2</amountOfDays>
+	<food>no</food>
+	<price>250</price>
+	<city>Moscow</city>
+<tour>
+<tour>
+	<id>3</id>
+	<type>Recovery</type>
+	<amountOfDays>30</amountOfDays>
+	<food>yes</food>
+	<price>4000</price>
+	<illness>osteochondrosis</illness>
+<tour>
+<tour>
+	<id>4</id>
+	<type>Relaxation</type>
+	<amountOfDays>14</amountOfDays>
+	<food>yes</food>
+	<price>1500</price>
+	<country>Turkey</country>
+<tour>
+<tour>
+	<id>5</id>
+	<type>Shopping</type>
+	<amountOfDays>1</amountOfDays>
+	<food>no</food>
+	<price>100</price>
+	<shop>Ikea</shop>
+<tour>
