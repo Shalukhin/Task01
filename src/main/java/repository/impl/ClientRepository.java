@@ -55,14 +55,13 @@ public class ClientRepository implements Repository<Client> {
 		}
 		return clients.remove(client);
 	}
-
-	@Override
-	public boolean update(Client clientUpdate) throws RepositoryException {
+	
+	public boolean update(final Client clientUpdate) throws RepositoryException {
 		if (Validator.isNullValue(clientUpdate)) {
 			throw new RepositoryException("update_null_tour");
 		}
 		Client deleteClient = (Client) find(new Specification<Client>() {			
-			@Override
+			
 			public boolean specified(Client client) {
 				if (client.getId() == clientUpdate.getId()) {
 					return true;

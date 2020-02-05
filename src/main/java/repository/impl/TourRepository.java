@@ -55,13 +55,13 @@ public class TourRepository implements Repository<Tour> {
 		return tours.remove(tour);
 	}
 	
-	@Override
-	public boolean update(Tour tourUpdate) throws RepositoryException {
+	
+	public boolean update(final Tour tourUpdate) throws RepositoryException {
 		if (Validator.isNullValue(tourUpdate)) {
 			throw new RepositoryException("update_null_tour");
 		}
 		Tour deleteTour = (Tour) find(new Specification<Tour>() {			
-			@Override
+			
 			public boolean specified(Tour tour) {
 				if (tour.getId() == tourUpdate.getId()) {
 					return true;
