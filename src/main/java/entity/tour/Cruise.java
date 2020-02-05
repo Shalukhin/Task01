@@ -8,14 +8,13 @@ public class Cruise extends Tour {
 
 	public Cruise() {
 		super();		
-	}
+	}	
 
-	public Cruise(TypeOfTour type, int id, int amountOfDays, TypeOfTransportation transportation, boolean food, BigDecimal price,
-			String routeOfCruise) {
-		super(type, id, amountOfDays, transportation, food, price);
+	public Cruise(int id, TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
+			BigDecimal price, String routeOfCruise) {
+		super(id, type, amountOfDays, transportation, food, price);
 		this.routeOfCruise = routeOfCruise;
 	}
-	
 
 	public String getRouteOfCruise() {
 		return routeOfCruise;
@@ -60,7 +59,6 @@ public class Cruise extends Tour {
 	public String toString() {
 		return "Cruise [routeOfCruise=" + routeOfCruise + ", toString()=" + super.toString() + "]";
 	}
-	
 	
 
 }

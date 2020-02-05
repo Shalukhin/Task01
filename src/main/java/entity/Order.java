@@ -1,50 +1,64 @@
 package entity;
 
-import java.util.Arrays;
-
-public class Order {
-	
-	private Client client;
-	private Tour[] tours;
+public class Order extends Entity {
+		
+	private int clientId;
+	private int tourId;
 	
 	public Order() {
 		super();		
-	}
-	
-	public Order(Client client, Tour tour) {
-		super();
-		this.client = client;
-		this.tours = new Tour[1];
-		this.tours[0] = tour;
+	}	
+
+	public Order(int id, int clientId, int tourId) {
+		super(id);
+		this.clientId = clientId;
+		this.tourId = tourId;
+	}	
+
+	public int getClientId() {
+		return clientId;
 	}
 
-	public Client getClient() {
-		return client;
+	public void setClientId(int clientId) {
+		this.clientId = clientId;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public int getTourId() {
+		return tourId;
 	}
 
-	public Tour[] getTours() {
-		return tours;
+	public void setTourId(int tourId) {
+		this.tourId = tourId;
 	}
 
-	public void setTours(Tour[] tours) {
-		this.tours = tours;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + clientId;
+		result = prime * result + tourId;
+		return result;
 	}
-	
-	public void setToursIndex(Tour tour, int index) {
-		if (index >= tours.length) {
-			tours = Arrays.copyOf(tours, tours.length + 1);
-			tours[tours.length - 1] = tour;
-			return;
-		}
-		tours[index] = tour;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		if (clientId != other.clientId)
+			return false;
+		if (tourId != other.tourId)
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [client=" + client + ", tours=" + Arrays.toString(tours) + "]";
+		return "Order [clientId=" + clientId + ", tourId=" + tourId + ", toString()=" + super.toString() + "]";
 	}	
+		
 }

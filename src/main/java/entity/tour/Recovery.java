@@ -9,12 +9,12 @@ public class Recovery extends Tour {
 	public Recovery() {
 		super();
 	}	
-		
-	public Recovery(TypeOfTour type, int id, int amountOfDays, TypeOfTransportation transportation, boolean food, BigDecimal price,
-			String illness) {
-		super(type, id, amountOfDays, transportation, food, price);
+	
+	public Recovery(int id, TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
+			BigDecimal price, String illness) {
+		super(id, type, amountOfDays, transportation, food, price);
 		this.illness = illness;
-	}	
+	}
 	
 	@Override
 	public String receiveSpecificInfo() {		

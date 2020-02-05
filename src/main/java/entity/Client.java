@@ -1,26 +1,16 @@
 package entity;
 
-public class Client {	
+public class Client extends Entity{	
 	
-	private int id;
 	private String name;
 	
 	public Client() {
 		super();
-	}
+	}	
 
 	public Client(int id, String name) {
-		super();
-		this.id = id;
+		super(id);
 		this.name = name;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -34,8 +24,7 @@ public class Client {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
+		int result = super.hashCode();
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -44,13 +33,11 @@ public class Client {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Client other = (Client) obj;
-		if (id != other.id)
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -61,8 +48,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", name=" + name + "]";
+		return "Client [name=" + name + ", toString()=" + super.toString() + "]";
 	}
-	
 	
 }

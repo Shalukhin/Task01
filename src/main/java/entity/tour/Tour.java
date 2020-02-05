@@ -2,12 +2,12 @@ package entity.tour;
 
 import java.math.BigDecimal;
 
-public class Tour {
+import entity.Entity;
+
+public class Tour extends Entity {
 
 	private TypeOfTour type;
 	
-	private int id;
-		
 	private int amountOfDays;
 	private TypeOfTransportation transportation;
 	private boolean food;
@@ -15,20 +15,18 @@ public class Tour {
 	
 	public Tour() {
 		super();
-	}
-		
-	public Tour(TypeOfTour type, int id, int amountOfDays, TypeOfTransportation transportation, boolean food,
+	}	
+	
+	public Tour(int id, TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
 			BigDecimal price) {
-		super();
+		super(id);
 		this.type = type;
-		this.id = id;
 		this.amountOfDays = amountOfDays;
 		this.transportation = transportation;
 		this.food = food;
 		this.price = price;
 	}
-	
-	
+
 	public TypeOfTour getType() {
 		return type;
 	}
@@ -37,17 +35,6 @@ public class Tour {
 	public void setType(TypeOfTour type) {
 		this.type = type;
 	}
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 
 	public int getAmountOfDays() {
 		return amountOfDays;
@@ -96,10 +83,9 @@ public class Tour {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + amountOfDays;
 		result = prime * result + (food ? 1231 : 1237);
-		result = prime * result + id;
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((transportation == null) ? 0 : transportation.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
@@ -110,7 +96,7 @@ public class Tour {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -118,8 +104,6 @@ public class Tour {
 		if (amountOfDays != other.amountOfDays)
 			return false;
 		if (food != other.food)
-			return false;
-		if (id != other.id)
 			return false;
 		if (price == null) {
 			if (other.price != null)
@@ -135,8 +119,8 @@ public class Tour {
 
 	@Override
 	public String toString() {
-		return "Tour [type=" + type + ", id=" + id + ", amountOfDays=" + amountOfDays + ", transportation="
-				+ transportation + ", food=" + food + ", price=" + price + "]";
+		return "Tour [type=" + type + ", amountOfDays=" + amountOfDays + ", transportation=" + transportation
+				+ ", food=" + food + ", price=" + price + ", toString()=" + super.toString() + "]";
 	}	
 
 }

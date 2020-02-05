@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
+public class ParserText {
 	
 	public static ArrayList<String> getArrayTagsFromTextByName(String text, String nameTag) {
 		ArrayList<String> tagsArr = new ArrayList<String>();
