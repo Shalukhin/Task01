@@ -1,17 +1,15 @@
-package entity.tour;
+package entity;
 
 import java.math.BigDecimal;
 
-import entity.Entity;
+public class Tour{
 
-public class Tour extends Entity {
-
-	private TypeOfTour type;
-	
-	private int amountOfDays;
-	private TypeOfTransportation transportation;
-	private boolean food;
-	private BigDecimal price;
+	protected int id;
+	protected TypeOfTour type;	
+	protected int amountOfDays;
+	protected TypeOfTransportation transportation;
+	protected boolean food;
+	protected BigDecimal price;
 	
 	public Tour() {
 		super();
@@ -19,7 +17,8 @@ public class Tour extends Entity {
 	
 	public Tour(int id, TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
 			BigDecimal price) {
-		super(id);
+		super();
+		this.id = id;
 		this.type = type;
 		this.amountOfDays = amountOfDays;
 		this.transportation = transportation;
@@ -27,10 +26,17 @@ public class Tour extends Entity {
 		this.price = price;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public TypeOfTour getType() {
 		return type;
 	}
-
 
 	public void setType(TypeOfTour type) {
 		this.type = type;
@@ -40,41 +46,33 @@ public class Tour extends Entity {
 		return amountOfDays;
 	}
 
-
 	public void setAmountOfDays(int amountOfDays) {
 		this.amountOfDays = amountOfDays;
 	}
-
 
 	public TypeOfTransportation getTransportation() {
 		return transportation;
 	}
 
-
 	public void setTransportation(TypeOfTransportation transportation) {
 		this.transportation = transportation;
 	}
-
 
 	public boolean isFood() {
 		return food;
 	}
 
-
 	public void setFood(boolean food) {
 		this.food = food;
 	}
-
 
 	public BigDecimal getPrice() {
 		return price;
 	}
 
-
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-
 
 	public String receiveSpecificInfo() {
 		return "No specific info";
@@ -83,9 +81,10 @@ public class Tour extends Entity {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
+		int result = 1;
 		result = prime * result + amountOfDays;
 		result = prime * result + (food ? 1231 : 1237);
+		result = prime * result + id;
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((transportation == null) ? 0 : transportation.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
@@ -96,7 +95,7 @@ public class Tour extends Entity {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -104,6 +103,8 @@ public class Tour extends Entity {
 		if (amountOfDays != other.amountOfDays)
 			return false;
 		if (food != other.food)
+			return false;
+		if (id != other.id)
 			return false;
 		if (price == null) {
 			if (other.price != null)
@@ -119,8 +120,8 @@ public class Tour extends Entity {
 
 	@Override
 	public String toString() {
-		return "Tour [type=" + type + ", amountOfDays=" + amountOfDays + ", transportation=" + transportation
-				+ ", food=" + food + ", price=" + price + ", toString()=" + super.toString() + "]";
-	}	
-
+		return "Tour [id=" + id + ", type=" + type + ", amountOfDays=" + amountOfDays + ", transportation="
+				+ transportation + ", food=" + food + ", price=" + price + "]";
+	}
+	
 }

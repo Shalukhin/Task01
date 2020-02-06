@@ -1,4 +1,4 @@
-package entity.tour;
+package entity;
 
 public enum TypeOfTransportation {
 	BUS,

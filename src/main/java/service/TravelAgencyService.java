@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import entity.Client;
 import entity.Order;
-import entity.tour.Tour;
+import entity.Tour;
 import factory.RepositoryFactory;
 import repository.EntityRepository;
 import util.ConstantsText;

@@ -1,10 +1,10 @@
-package entity.tour;
+package entity;
 
 import java.math.BigDecimal;
 
 public class Relaxation extends Tour {
 	
-	private String country = "";
+	private String country;
 
 	public Relaxation() {
 		super();

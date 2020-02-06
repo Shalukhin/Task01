@@ -1,10 +1,10 @@
-package entity.tour;
+package entity;
 
 import java.math.BigDecimal;
 
 public class Cruise extends Tour {
 	
-	private String routeOfCruise = "";
+	private String routeOfCruise;
 
 	public Cruise() {
 		super();		

@@ -1,10 +1,10 @@
-package entity.tour;
+package entity;
 
 import java.math.BigDecimal;
 
 public class Recovery extends Tour {
 	
-	private String illness = "";
+	private String illness;
 
 	public Recovery() {
 		super();

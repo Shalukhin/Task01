@@ -3,18 +3,19 @@ package repository.impl;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import entity.tour.Tour;
+
+import entity.Tour;
 import repository.Repository;
 import util.Specification;
 import util.exception.RepositoryException;
 
 public class TourRepository implements Repository<Tour> {
 
-	private Set<Tour> tours;
+	private Set<Tour> tourCollection;
 
 	private TourRepository() {
 		super();
-		tours = new HashSet<Tour>();
+		tourCollection = new HashSet<Tour>();
 	}
 	
 	private static class SingletonHolder{
@@ -30,7 +31,7 @@ public class TourRepository implements Repository<Tour> {
 			throw new RepositoryException("add_null_tour");
 		}
 
-		return tours.add(tour);
+		return tourCollection.add(tour);
 	}
 	
 	public Collection<Tour> find(Specification<Tour> specification) throws RepositoryException {
@@ -38,7 +39,7 @@ public class TourRepository implements Repository<Tour> {
 			throw new RepositoryException("null_specification_tour");
 		}
 		Set<Tour> result = new HashSet<Tour>();
-		for (Tour existTour : tours) {
+		for (Tour existTour : tourCollection) {
 			if (specification.specified(existTour)) {
 				result.add(existTour);
 			}
@@ -50,7 +51,7 @@ public class TourRepository implements Repository<Tour> {
 		if (tour == null) {
 			throw new RepositoryException("delete_null_tour");
 		}
-		return tours.remove(tour);
+		return tourCollection.remove(tour);
 	}
 	
 	
@@ -59,15 +60,13 @@ public class TourRepository implements Repository<Tour> {
 			throw new RepositoryException("update_null_tour");
 		}
 		Tour tourExist = null; 
-		for (Tour tour : tours) {
+		for (Tour tour : tourCollection) {
 			if (tour.getId() == tourUpdate.getId()) {
 				tourExist = tour;
 				break;
 			}
-		}
-		
-		return delete(tourExist) ? save(tourUpdate) : false;	
-		
+		}		
+		return delete(tourExist) ? save(tourUpdate) : false;		
 	}
 
 }
