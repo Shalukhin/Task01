@@ -8,6 +8,7 @@ import entity.Order;
 import entity.Tour;
 import factory.RepositoryFactory;
 import repository.EntityRepository;
+import repository.impl.TourRepository;
 import util.ConstantsText;
 import util.DriversFile;
 import util.ParserText;
@@ -15,11 +16,7 @@ import util.exception.ServiceException;
 
 public class TravelAgencyService {
 	
-	private RepositoryFactory factoryRepository = RepositoryFactory.getInstance();
-	
-	private EntityRepository<Tour> tours = factoryRepository.getTourRepository();
-	private EntityRepository<Client> clients = factoryRepository.getClientRepository();
-	private EntityRepository<Order> orders = factoryRepository.getOrderRepository();
+	private TourRepository tours = TourRepository.getInstance();
 	
 	public void refreashTourRepository() throws ServiceException {
 		
