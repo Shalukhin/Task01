@@ -9,29 +9,30 @@ import repository.EntityRepository;
 //import repository.impl.OrderRepository;
 //import repository.impl.TourRepository;
 
-public class FactoryRepository {
+public class RepositoryFactory {
 	
-	private final static FactoryRepository instance = new FactoryRepository();
+	private final static RepositoryFactory instance = new RepositoryFactory();
 	
 //	private final Repository<Tour> tourRepository = new TourRepository();	
 //	private final Repository<Client> clientRepository = new ClientRepository();
 //	private final Repository<Order> orderRepository = new OrderRepository();
 	
-	private final EntityRepository<Tour> tourRepository = new EntityRepository<Tour>();	
-	private final EntityRepository<Client> clientRepository = new EntityRepository<Client>();
-	private final EntityRepository<Order> orderRepository = new EntityRepository<Order>();	
 	
-	private FactoryRepository() {};
+	private RepositoryFactory() {};
 	
-	public static FactoryRepository getInstance() {
+	public static RepositoryFactory getInstance() {
 		return instance;
 	}
 	
 	public EntityRepository<Tour> getTourRepository() {
+		if (tourRepository == null) {
+			tourRepository = new EntityRepository<Tour>();
+		}
 		return tourRepository;
 	}
 	
 	public EntityRepository<Client> getClientRepository() {
+		if
 		return clientRepository;
 	}
 	

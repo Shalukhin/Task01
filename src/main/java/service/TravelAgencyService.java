@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import entity.Client;
 import entity.Order;
 import entity.tour.Tour;
-import factory.FactoryRepository;
+import factory.RepositoryFactory;
 import repository.EntityRepository;
 import util.ConstantsText;
 import util.DriversFile;
@@ -15,11 +15,11 @@ import util.exception.ServiceException;
 
 public class TravelAgencyService {
 	
-	FactoryRepository factoryRepository = FactoryRepository.getInstance();
+	private RepositoryFactory factoryRepository = RepositoryFactory.getInstance();
 	
-	EntityRepository<Tour> tours = factoryRepository.getTourRepository();
-	EntityRepository<Client> clients = factoryRepository.getClientRepository();
-	EntityRepository<Order> orders = factoryRepository.getOrderRepository();
+	private EntityRepository<Tour> tours = factoryRepository.getTourRepository();
+	private EntityRepository<Client> clients = factoryRepository.getClientRepository();
+	private EntityRepository<Order> orders = factoryRepository.getOrderRepository();
 	
 	public void refreashTourRepository() throws ServiceException {
 		
@@ -36,6 +36,46 @@ public class TravelAgencyService {
 		}
 		
 	}
+	
+	
+
+
+//	public Tour findTourById(final int id) throws RepositoryException {	
+//		
+//		Specification<Tour> specification = new Specification<Tour>() {			
+//			public boolean specified(Tour tour) {
+//				if (tour.getId() == id) {
+//					return true;
+//				}
+//				return false;
+//			}
+//		};
+//		
+//		Set<Tour> result = (Set<Tour>) find(specification);
+//		
+//		if (result.size() == 0) {
+//			throw new RepositoryException("tour_not_found");
+//		}
+//		
+//		return (Tour) result.toArray()[0];
+//	}
+//
+//	public Collection<Tour> findToursByType(final TypeOfTour type) throws RepositoryException {
+//		Specification<Tour> specification = new Specification<Tour>() {			
+//			public boolean specified(Tour tour) {
+//				if (tour.getType().equals(type)) {
+//					return true;
+//				}
+//				return false;
+//			}
+//		};
+//		
+//		return find(specification);
+//	}
+
+	
+	
+
 	
 
 }
