@@ -12,6 +12,12 @@ import entity.TypeOfTour;
 import entity.TypeOfTransportation;
 
 public class TourFactory {
+	
+	private static TourFactory instance = new TourFactory();	
+	private TourFactory() {};
+	public static TourFactory getInsance() {
+		return instance;
+	}
 
 	public Tour getTour(TypeOfTour type) {
 
