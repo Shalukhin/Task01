@@ -4,6 +4,7 @@ package service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 
 import entity.Tour;
 import exception.ResourceException;
@@ -84,5 +85,38 @@ public class TravelAgencyService {
 		return new ArrayList<Tour>(findResult) ;		
 	}
 	
+	public ArrayList<Tour> getSortTours(Comparator<Tour> comparator){
+		ArrayList<Tour> allTours = getAllTour();
+		return quickSort(allTours, comparator);
+		
+	}
+	
+	private ArrayList<Tour> quickSort(ArrayList<Tour> collect, Comparator<Tour> comparator){
+		if (collect.size() < 2) {
+			return collect;
+		}
+		Tour middle = collect.get(0);
+		ArrayList<Tour> less = new ArrayList<Tour>();
+		ArrayList<Tour> more = new ArrayList<Tour>();
+		
+		for (int i = 1; i < collect.size(); i++) {
+			if (comparator.compare(collect.get(i), middle) == -1) {
+				less.add(collect.get(i));
+			} else {
+				more.add(collect.get(i));
+			}
+		}
+		
+		return composite(quickSort(less, comparator), middle, quickSort(more, comparator));
+		
+	}
+	private ArrayList<Tour> composite (ArrayList<Tour> less, Tour middle, ArrayList<Tour> more){
+		ArrayList<Tour> resultCollect = new ArrayList<Tour>();
+		resultCollect.addAll(less);
+		resultCollect.add(middle);
+		resultCollect.addAll(more);
+		
+		return resultCollect;
+	}
 
 }
