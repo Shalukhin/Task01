@@ -7,7 +7,8 @@ public class Excursion extends Tour {
 	String city;
 	
 	public Excursion() {
-		super();		
+		super();
+		this.type = TypeOfTour.EXCURSION;
 	}			
 
 	public Excursion(int amountOfDays, TypeOfTransportation transportation, boolean food,

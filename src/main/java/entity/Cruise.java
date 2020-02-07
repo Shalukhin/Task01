@@ -7,7 +7,8 @@ public class Cruise extends Tour {
 	private String routeOfCruise;
 
 	public Cruise() {
-		super();		
+		super();
+		this.type = TypeOfTour.CRUISE;
 	}	
 
 	public Cruise(int amountOfDays, TypeOfTransportation transportation, boolean food,

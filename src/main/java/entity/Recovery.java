@@ -8,6 +8,7 @@ public class Recovery extends Tour {
 
 	public Recovery() {
 		super();
+		this.type = TypeOfTour.RECOVERY;
 	}	
 	
 	public Recovery(int amountOfDays, TypeOfTransportation transportation, boolean food,

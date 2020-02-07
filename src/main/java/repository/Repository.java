@@ -3,12 +3,12 @@ package repository;
 import java.util.Collection;
 
 import exception.RepositoryException;
-import util.Specification;
+import specification.Specification;
 
 public interface Repository <T> {
 
-	boolean save(T obj) throws RepositoryException;	
-	Collection<T> find(Specification<T> specification) throws RepositoryException;
+	boolean save(T obj);	
+	Collection<T> find(Specification<T> specification);
 	boolean delete(T obj) throws RepositoryException;	
 	boolean update(T obj) throws RepositoryException;
 	

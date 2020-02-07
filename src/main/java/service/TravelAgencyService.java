@@ -1,38 +1,45 @@
 package service;
 
-import java.io.IOException;
-import java.util.ArrayList;
 
-import entity.Client;
-import entity.Order;
+import java.util.ArrayList;
 import entity.Tour;
+import exception.ResourceException;
 import exception.ServiceException;
 import factory.RepositoryFactory;
-import repository.EntityRepository;
-import repository.impl.TourRepository;
+import factory.TourFactory;
+import repository.Repository;
+import specification.TourSpecification;
 import util.ConstantsText;
 import util.ReaderFile;
 import util.ParserText;
 
 public class TravelAgencyService {
 	
-	private TourRepository tours = TourRepository.getInstance();
+	private RepositoryFactory repositoryFactory = RepositoryFactory.getInstance();
+	private TourFactory tourFactory = TourFactory.getInsance();
+	
+	private Repository<Tour> tourRepository = repositoryFactory.getTourRepository();
 	
 	public void refreashTourRepositoryFromFile() throws ServiceException {
 		
-		String tourBaseStr = "";
+		ArrayList<String> toursStrFromFile = null;
 		try {
-			tourBaseStr = ReaderFile.extractTextFromFile(ConstantsText.LINK_TOURS);
-		} catch (IOException e) {
-			throw new ServiceException("file_tours_error");
+			toursStrFromFile = ReaderFile.getArrayLines(ConstantsText.LINK_TOURS);
+		} catch (ResourceException e) {
+			throw new ServiceException("filling_repository_error");
 		}
 		
-		ArrayList<String> toursStr = ParserText.getArrayTagsFromTextByName(tourBaseStr, "tour");
-		for (int i = 0; i < toursStr.size(); i++) {
-			
-		}
-		
+		for (String tourStr : toursStrFromFile) {
+			Tour tour = tourFactory.getTour(ParserText.getArrayParametersFromLine(tourStr));			
+			tourRepository.save(tour);			
+		}		
 	}
+	
+	public ArrayList<Tour> getAllTour(){
+		return new ArrayList<Tour>(tourRepository.find(TourSpecification.FIND_ALL));
+	}
+	
+	
 	
 	
 

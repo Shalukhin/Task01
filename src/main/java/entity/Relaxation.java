@@ -8,6 +8,7 @@ public class Relaxation extends Tour {
 
 	public Relaxation() {
 		super();
+		this.type = TypeOfTour.RELAXATION;
 	}		
 
 	public Relaxation(int amountOfDays, TypeOfTransportation transportation, boolean food,

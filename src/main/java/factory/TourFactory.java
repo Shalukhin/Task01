@@ -44,11 +44,11 @@ public class TourFactory {
 	
 	public Tour getTour(ArrayList<String> parameters) {
 		
-		TypeOfTour type = TypeOfTour.valueOf(parameters.get(0));
+		TypeOfTour type = TypeOfTour.valueOf(parameters.get(0).toUpperCase());
 		
 		Tour resultTour = getTour(type);
 		
-		resultTour.setTransportation(TypeOfTransportation.valueOf(parameters.get(1)));
+		resultTour.setTransportation(TypeOfTransportation.valueOf(parameters.get(1).toUpperCase()));
 		resultTour.setAmountOfDays(Integer.valueOf(parameters.get(2)));
 		resultTour.setFood(parameters.get(3).equals("yes"));
 		resultTour.setPrice(new BigDecimal(parameters.get(4)));

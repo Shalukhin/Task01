@@ -8,6 +8,7 @@ public class Shopping extends Tour {
 	
 	public Shopping() {
 		super();
+		this.type = TypeOfTour.SHOPPING;
 	}		
 
 	public Shopping(int amountOfDays, TypeOfTransportation transportation, boolean food,

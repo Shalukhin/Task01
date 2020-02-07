@@ -7,16 +7,22 @@ import java.util.ArrayList;
 
 import entity.Cruise;
 import entity.Excursion;
+import entity.Tour;
 import entity.TypeOfTour;
+import exception.ResourceException;
+import exception.ServiceException;
+import service.TravelAgencyService;
 
 public class Runner {
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ResourceException, ServiceException {
 		
-		ArrayList<String> s = ReaderFile.getArrayLines(ConstantsText.LINK_TOURS);
+		TravelAgencyService agency = new TravelAgencyService();
 		
-		for (String str : s) {
-			System.out.println(str);
+		agency.refreashTourRepositoryFromFile();
+		
+		for (Tour tour : agency.getAllTour()) {
+			System.out.println(tour);
 		}
 		
 		

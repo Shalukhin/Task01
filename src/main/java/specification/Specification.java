@@ -1,4 +1,4 @@
-package util;
+package specification;
 
 public interface Specification<T> {
 	

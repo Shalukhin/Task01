@@ -7,7 +7,7 @@ import java.util.Set;
 import entity.Tour;
 import exception.RepositoryException;
 import repository.Repository;
-import util.Specification;
+import specification.Specification;
 
 public class TourRepository implements Repository<Tour> {
 
@@ -26,13 +26,12 @@ public class TourRepository implements Repository<Tour> {
 		return TourRepository.SingletonHolder.instance;
 	}
 
-	public boolean save(Tour tour) throws RepositoryException {
+	public boolean save(Tour tour){
 		
 		return tourCollection.add(tour);
 	}
 	
-	public Collection<Tour> find(Specification<Tour> specification) throws RepositoryException {
-		
+	public Collection<Tour> find(Specification<Tour> specification){		
 		Set<Tour> result = new HashSet<Tour>();
 		for (Tour existTour : tourCollection) {
 			if (specification.specified(existTour)) {
@@ -43,13 +42,17 @@ public class TourRepository implements Repository<Tour> {
 	}
 
 	public boolean delete(Tour tour) throws RepositoryException {
-		
+		if (tour == null) {
+			throw new RepositoryException("delete_null_tour");
+		}
 		return tourCollection.remove(tour);
 	}
 	
 	
 	public boolean update(final Tour tourUpdate) throws RepositoryException {
-		
+		if (tourUpdate == null) {
+			throw new RepositoryException("update_null_tour");
+		}
 		Tour tourExist = null; 
 		for (Tour tour : tourCollection) {
 			if (tour.getId() == tourUpdate.getId()) {
@@ -59,4 +62,5 @@ public class TourRepository implements Repository<Tour> {
 		}		
 		return delete(tourExist) ? save(tourUpdate) : false;		
 	}
+
 }
