@@ -11,7 +11,7 @@ import factory.RepositoryFactory;
 import factory.TourFactory;
 import repository.Repository;
 import specification.Specification;
-import specification.TourSpecification;
+import specification.impl.TourSpecificationStandartSearch;
 import specification.impl.TourSpecificationFindById;
 import specification.impl.TourSpecificationFindInRangePrice;
 import util.ConstantsText;
@@ -48,19 +48,19 @@ public class TravelAgencyServiceImpl implements TravelAgencyService {
 	}
 	
 	public ArrayList<Tour> getAllTour(){
-		return new ArrayList<Tour>(tourRepository.find(TourSpecification.FIND_ALL));
+		return new ArrayList<Tour>(tourRepository.find(TourSpecificationStandartSearch.FIND_ALL));
 	}
 	
 	public ArrayList<Tour> getAllCruise(){
-		return new ArrayList<Tour>(tourRepository.find(TourSpecification.FIND_ALL_CRUISE));
+		return new ArrayList<Tour>(tourRepository.find(TourSpecificationStandartSearch.FIND_ALL_CRUISE));
 	}
 	
 	public ArrayList<Tour> getAllToursWithFoodIncluding(){
-		return new ArrayList<Tour>(tourRepository.find(TourSpecification.FIND_ALL_TOUR_WITH_FOOD_INCLUDING));
+		return new ArrayList<Tour>(tourRepository.find(TourSpecificationStandartSearch.FIND_ALL_TOUR_WITH_FOOD_INCLUDING));
 	}
 	
 	public ArrayList<Tour> getAllToursWithAirTransportation(){
-		return new ArrayList<Tour>(tourRepository.find(TourSpecification.FIND_ALL_TOUR_WITH_AIR_TRANSPORTATION));
+		return new ArrayList<Tour>(tourRepository.find(TourSpecificationStandartSearch.FIND_ALL_TOUR_WITH_AIR_TRANSPORTATION));
 	}
 	
 	public Tour getTourById(final int id) throws ServiceException {

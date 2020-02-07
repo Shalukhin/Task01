@@ -26,6 +26,5 @@ public class ReaderFile {
 	           throw new ResourceException("file_tours_error");
 	        }
 		 return result;
-	}
-	
+	}	
 }

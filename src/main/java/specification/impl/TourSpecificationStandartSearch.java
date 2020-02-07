@@ -1,10 +1,11 @@
-package specification;
+package specification.impl;
 
 import entity.Tour;
 import entity.TypeOfTour;
 import entity.TypeOfTransportation;
+import specification.Specification;
 
-public enum TourSpecification implements Specification<Tour> {
+public enum TourSpecificationStandartSearch implements Specification<Tour> {
 	FIND_ALL {
 		@Override
 		public boolean specified(Tour tour) {

@@ -10,11 +10,7 @@ public class ParserText {
 		String[] arr = line.split("\\|");
 		for (int i = 0; i < arr.length; i++) {
 			resultParamArr.add(arr[i].trim());
-		}
-		
-		return resultParamArr;
-		
-	}
-
-	
+		}		
+		return resultParamArr;		
+	}	
 }
