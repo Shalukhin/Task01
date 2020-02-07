@@ -20,7 +20,7 @@ public enum TourComparator implements Comparator<Tour> {
 			} else if (arg0.getAmountOfDays() < arg1.getAmountOfDays()) {
 				return -1;
 			} else {
-				return 1;
+				return 0;
 			}
 		}
 	}
