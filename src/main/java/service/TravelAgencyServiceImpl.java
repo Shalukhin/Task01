@@ -1,11 +1,9 @@
 package service;
 
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
-
 import entity.Tour;
 import exception.ResourceException;
 import exception.ServiceException;
@@ -14,6 +12,8 @@ import factory.TourFactory;
 import repository.Repository;
 import specification.Specification;
 import specification.TourSpecification;
+import specification.impl.TourSpecificationFindById;
+import specification.impl.TourSpecificationFindInRangePrice;
 import util.ConstantsText;
 import util.ReaderFile;
 import util.ParserText;
@@ -64,12 +64,7 @@ public class TravelAgencyServiceImpl implements TravelAgencyService {
 	}
 	
 	public Tour getTourById(final int id) throws ServiceException {
-		Specification<Tour> specification = new Specification<Tour>() {			
-			@Override
-			public boolean specified(Tour tour) {				
-				return (tour.getId() == id);
-			}
-		};
+		Specification<Tour> specification = new TourSpecificationFindById(id);
 		Collection<Tour> findResult = tourRepository.find(specification);
 		if (findResult.size() == 0) {
 			throw new ServiceException("tour_not_found");
@@ -78,13 +73,7 @@ public class TravelAgencyServiceImpl implements TravelAgencyService {
 	}
 	
 	public ArrayList<Tour> getToursInRangePrice(final double min, final double max) throws ServiceException{
-		Specification<Tour> specification = new Specification<Tour>() {			
-			@Override
-			public boolean specified(Tour tour) {
-				return (tour.getPrice().compareTo(BigDecimal.valueOf(min)) == 1 && tour.getPrice().compareTo(BigDecimal.valueOf(max)) == -1);
-			}
-		};
-		
+		Specification<Tour> specification = new TourSpecificationFindInRangePrice(min, max);
 		Collection<Tour> findResult = tourRepository.find(specification);
 		if (findResult.size() == 0) {
 			throw new ServiceException("tours_not_found");
