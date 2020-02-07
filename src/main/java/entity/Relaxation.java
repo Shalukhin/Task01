@@ -10,9 +10,9 @@ public class Relaxation extends Tour {
 		super();
 	}		
 
-	public Relaxation(TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
+	public Relaxation(int amountOfDays, TypeOfTransportation transportation, boolean food,
 			BigDecimal price, String country) {
-		super(type, amountOfDays, transportation, food, price);
+		super(TypeOfTour.RELAXATION, amountOfDays, transportation, food, price);
 		this.country = country;
 	}
 

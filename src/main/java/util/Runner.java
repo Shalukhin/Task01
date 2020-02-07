@@ -15,16 +15,12 @@ public class Runner {
 		
 		ArrayList<String> s = ReaderFile.getArrayLines(ConstantsText.LINK_TOURS);
 		
-		for (String str : ParserText.getArrayParametersFromLine(s.get(0))) {
-			System.out.println("<"+str+">"+str.isEmpty());
+		for (String str : s) {
+			System.out.println(str);
 		}
 		
-		//System.out.println(ParserText.getArrayParametersFromLine(s.get(0)));
 		
-		Cruise t1 = new Cruise();
-		Excursion e1 = new Excursion();
-		System.out.println(t1.getId());
-		System.out.println(e1.getId());
+		
 	}
 
 }

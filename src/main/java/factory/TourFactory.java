@@ -2,7 +2,6 @@ package factory;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
 import entity.Cruise;
 import entity.Excursion;
 import entity.Recovery;
@@ -11,8 +10,6 @@ import entity.Shopping;
 import entity.Tour;
 import entity.TypeOfTour;
 import entity.TypeOfTransportation;
-import util.ParserText;
-import util.Validator;
 
 public class TourFactory {
 
@@ -39,48 +36,45 @@ public class TourFactory {
 		return null;
 	}
 	
-	public Tour getTourWithXMLParameters(String parametersXML) {
+	public Tour getTour(ArrayList<String> parameters) {
 		
+		TypeOfTour type = TypeOfTour.valueOf(parameters.get(0));
 		
+		Tour resultTour = getTour(type);
 		
-		Tour resultTour = new Tour();
+		resultTour.setTransportation(TypeOfTransportation.valueOf(parameters.get(1)));
+		resultTour.setAmountOfDays(Integer.valueOf(parameters.get(2)));
+		resultTour.setFood(parameters.get(3).equals("yes"));
+		resultTour.setPrice(new BigDecimal(parameters.get(4)));
 		
 		switch (type) {
 		case CRUISE:
 			Cruise cruise = (Cruise) resultTour;
-			
-			tagArray = ParserText.getArrayTagsFromTextByName(parametersXML, "routeOfCruise");
-			if (tagArray.size() > 0) {
-				cruise.setRouteOfCruise(tagArray.get(0));
-			} else {
-				cruise.setRouteOfCruise("none");
-			}			
-			break; 
+			cruise.setRouteOfCruise(parameters.get(5));
+			return cruise;
 
 		case EXCURSION:
 			Excursion excursion = (Excursion) resultTour;
-			
-			tagArray = ParserText.getArrayTagsFromTextByName(parametersXML, "city");
-			if (tagArray.size() > 0) {
-				excursion.setCity(tagArray.get(0));
-			} else {
-				excursion.setCity("none");
-			}			
-			break; 
+			excursion.setCity(parameters.get(5));
+			return excursion;
 			
 		case RECOVERY:
-			return new Recovery();
+			Recovery recovery = (Recovery) resultTour;
+			recovery.setIllness(parameters.get(5));
+			return recovery;
 			
 		case RELAXATION:
-			return new Relaxation();
+			Relaxation relaxation = (Relaxation) resultTour;
+			relaxation.setCountry(parameters.get(5));
+			return relaxation;
 			
 		case SHOPPING:
-			return new Shopping();
+			Shopping shopping = (Shopping) resultTour;
+			shopping.setShop(parameters.get(5));
+			return shopping;
 		}
 		
-		resultTour.setType(type);
-		
-		
+		return null;
 	}
 
 }

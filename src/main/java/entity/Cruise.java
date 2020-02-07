@@ -10,9 +10,9 @@ public class Cruise extends Tour {
 		super();		
 	}	
 
-	public Cruise(TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
+	public Cruise(int amountOfDays, TypeOfTransportation transportation, boolean food,
 			BigDecimal price, String routeOfCruise) {
-		super(type, amountOfDays, transportation, food, price);
+		super(TypeOfTour.CRUISE, amountOfDays, transportation, food, price);
 		this.routeOfCruise = routeOfCruise;
 	}
 

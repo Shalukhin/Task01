@@ -10,12 +10,20 @@ public class Recovery extends Tour {
 		super();
 	}	
 	
-	public Recovery(TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
+	public Recovery(int amountOfDays, TypeOfTransportation transportation, boolean food,
 			BigDecimal price, String illness) {
-		super(type, amountOfDays, transportation, food, price);
+		super(TypeOfTour.RECOVERY, amountOfDays, transportation, food, price);
+		this.illness = illness;
+	}	
+	
+	public String getIllness() {
+		return illness;
+	}
+
+	public void setIllness(String illness) {
 		this.illness = illness;
 	}
-	
+
 	@Override
 	public String receiveSpecificInfo() {		
 		return String.format("This tour is recommended for illness \"%s\"", illness);

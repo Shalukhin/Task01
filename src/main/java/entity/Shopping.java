@@ -10,9 +10,9 @@ public class Shopping extends Tour {
 		super();
 	}		
 
-	public Shopping(TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
+	public Shopping(int amountOfDays, TypeOfTransportation transportation, boolean food,
 			BigDecimal price, String shop) {
-		super(type, amountOfDays, transportation, food, price);
+		super(TypeOfTour.SHOPPING, amountOfDays, transportation, food, price);
 		this.shop = shop;
 	}
 

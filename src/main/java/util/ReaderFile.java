@@ -16,7 +16,9 @@ public class ReaderFile {
 	                        new FileInputStream(linkFile), StandardCharsets.UTF_8))){
 	            String line;
 	            while ((line = reader.readLine()) != null) {
-	            	result.add(line);
+	            	if (Validator.isValidParametersTour(ParserText.getArrayParametersFromLine(line))) {
+	            		result.add(line);
+	            	}	            	
 	            }
 	        } catch (IOException e) {
 	           System.out.println("ioErr");
