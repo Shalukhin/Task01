@@ -27,17 +27,12 @@ public class TourRepository implements Repository<Tour> {
 	}
 
 	public boolean save(Tour tour) throws RepositoryException {
-		if (tour == null) {
-			throw new RepositoryException("add_null_tour");
-		}
-
+		
 		return tourCollection.add(tour);
 	}
 	
 	public Collection<Tour> find(Specification<Tour> specification) throws RepositoryException {
-		if (specification == null) {
-			throw new RepositoryException("null_specification_tour");
-		}
+		
 		Set<Tour> result = new HashSet<Tour>();
 		for (Tour existTour : tourCollection) {
 			if (specification.specified(existTour)) {
@@ -48,17 +43,13 @@ public class TourRepository implements Repository<Tour> {
 	}
 
 	public boolean delete(Tour tour) throws RepositoryException {
-		if (tour == null) {
-			throw new RepositoryException("delete_null_tour");
-		}
+		
 		return tourCollection.remove(tour);
 	}
 	
 	
 	public boolean update(final Tour tourUpdate) throws RepositoryException {
-		if (tourUpdate == null) {
-			throw new RepositoryException("update_null_tour");
-		}
+		
 		Tour tourExist = null; 
 		for (Tour tour : tourCollection) {
 			if (tour.getId() == tourUpdate.getId()) {
@@ -68,5 +59,4 @@ public class TourRepository implements Repository<Tour> {
 		}		
 		return delete(tourExist) ? save(tourUpdate) : false;		
 	}
-
 }
