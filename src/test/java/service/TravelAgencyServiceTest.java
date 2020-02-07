@@ -54,9 +54,7 @@ public class TravelAgencyServiceTest {
 		Cruise cruise1 = new Cruise(12, TypeOfTransportation.SEA, true, BigDecimal.valueOf(2000), "Italy - Cyprus");
 		cruise1.setId(13);		
 		ArrayList<Tour> expected = new ArrayList<>();		
-		expected.add(cruise1);
-		System.out.println(expected);
-		System.out.println(travelAgencyService.getAllCruise());
+		expected.add(cruise1);		
 		assertEquals(expected, travelAgencyService.getAllCruise());
 	}
 	
