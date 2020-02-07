@@ -17,7 +17,7 @@ public class Validator {
 				!isValidAmountOfDayOfTour(param.get(2)) || 
 				!isValidFoodOfTour(param.get(3)) || 
 				!isValidPriceOfTour(param.get(4)) ||
-				!isValidSpecificInfoOfTour(param.get(4))){
+				!isValidSpecificInfoOfTour(param.get(5))){
 			return false;
 		}
 		return true;		
