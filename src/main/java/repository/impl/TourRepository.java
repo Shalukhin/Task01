@@ -46,8 +46,7 @@ public class TourRepository implements Repository<Tour> {
 			throw new RepositoryException("delete_null_tour");
 		}
 		return tourCollection.remove(tour);
-	}
-	
+	}	
 	
 	public boolean update(final Tour tourUpdate) throws RepositoryException {
 		if (tourUpdate == null) {

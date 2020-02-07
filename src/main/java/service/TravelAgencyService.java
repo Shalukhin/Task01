@@ -1,13 +1,17 @@
 package service;
 
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
+
 import entity.Tour;
 import exception.ResourceException;
 import exception.ServiceException;
 import factory.RepositoryFactory;
 import factory.TourFactory;
 import repository.Repository;
+import specification.Specification;
 import specification.TourSpecification;
 import util.ConstantsText;
 import util.ReaderFile;
@@ -39,47 +43,46 @@ public class TravelAgencyService {
 		return new ArrayList<Tour>(tourRepository.find(TourSpecification.FIND_ALL));
 	}
 	
+	public ArrayList<Tour> getAllCruise(){
+		return new ArrayList<Tour>(tourRepository.find(TourSpecification.FIND_ALL_CRUISE));
+	}
 	
+	public ArrayList<Tour> getAllToursWithFoodIncluding(){
+		return new ArrayList<Tour>(tourRepository.find(TourSpecification.FIND_ALL_TOUR_WITH_FOOD_INCLUDING));
+	}
 	
+	public ArrayList<Tour> getAllToursWithAirTransportation(){
+		return new ArrayList<Tour>(tourRepository.find(TourSpecification.FIND_ALL_TOUR_WITH_AIR_TRANSPORTATION));
+	}
 	
-
-
-//	public Tour findTourById(final int id) throws RepositoryException {	
-//		
-//		Specification<Tour> specification = new Specification<Tour>() {			
-//			public boolean specified(Tour tour) {
-//				if (tour.getId() == id) {
-//					return true;
-//				}
-//				return false;
-//			}
-//		};
-//		
-//		Set<Tour> result = (Set<Tour>) find(specification);
-//		
-//		if (result.size() == 0) {
-//			throw new RepositoryException("tour_not_found");
-//		}
-//		
-//		return (Tour) result.toArray()[0];
-//	}
-//
-//	public Collection<Tour> findToursByType(final TypeOfTour type) throws RepositoryException {
-//		Specification<Tour> specification = new Specification<Tour>() {			
-//			public boolean specified(Tour tour) {
-//				if (tour.getType().equals(type)) {
-//					return true;
-//				}
-//				return false;
-//			}
-//		};
-//		
-//		return find(specification);
-//	}
-
+	public Tour getTuorById(int id) throws ServiceException {
+		Specification<Tour> specification = new Specification<Tour>() {			
+			@Override
+			public boolean specified(Tour tour) {				
+				return (tour.getId() == id);
+			}
+		};
+		Collection<Tour> findResult = tourRepository.find(specification);
+		if (findResult.size() == 0) {
+			throw new ServiceException("tour_not_found");
+		}
+		return (Tour) findResult.toArray()[0];
+	}
 	
-	
-
+	public ArrayList<Tour> getToursInRangePrice(double min, double max) throws ServiceException{
+		Specification<Tour> specification = new Specification<Tour>() {			
+			@Override
+			public boolean specified(Tour tour) {
+				return (tour.getPrice().compareTo(BigDecimal.valueOf(min)) == 1 && tour.getPrice().compareTo(BigDecimal.valueOf(max)) == -1);
+			}
+		};
+		
+		Collection<Tour> findResult = tourRepository.find(specification);
+		if (findResult.size() == 0) {
+			throw new ServiceException("tours_not_found");
+		}
+		return new ArrayList<Tour>(findResult) ;		
+	}
 	
 
 }
