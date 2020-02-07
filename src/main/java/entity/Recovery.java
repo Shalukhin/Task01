@@ -10,9 +10,9 @@ public class Recovery extends Tour {
 		super();
 	}	
 	
-	public Recovery(int id, TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
+	public Recovery(TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
 			BigDecimal price, String illness) {
-		super(id, type, amountOfDays, transportation, food, price);
+		super(type, amountOfDays, transportation, food, price);
 		this.illness = illness;
 	}
 	

@@ -1,13 +1,29 @@
 package util;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import entity.TypeOfTour;
 import entity.TypeOfTransportation;
 
 public class Validator {
+	
+	public static boolean isValidParametersTour(ArrayList<String> param) {
+		if (param.size() < 6) {
+			return false;
+		}
+		if (!isValidTypeOfTour(param.get(0)) || 
+				!isValidTransportationOfTour(param.get(1)) || 
+				!isValidAmountOfDayOfTour(param.get(2)) || 
+				!isValidFoodOfTour(param.get(3)) || 
+				!isValidPriceOfTour(param.get(4)) ||
+				!isValidSpecificInfoOfTour(param.get(4))){
+			return false;
+		}
+		return true;		
+	}	
 
-	public static boolean isValidTypeOfTour(String typeStr) {
+	private static boolean isValidTypeOfTour(String typeStr) {
 		try {
 			TypeOfTour.valueOf(typeStr.toUpperCase());
 		} catch (IllegalArgumentException e) {
@@ -15,18 +31,8 @@ public class Validator {
 		}
 		return true;
 	}
-
-	public static boolean isValidIdOfTour(String idStr) {		
-		int id;
-		try {
-			id = Integer.valueOf(idStr);
-		} catch (NumberFormatException e) {
-			return false;
-		}
-		return id > 0 ? true : false;
-	}
 	
-	public static boolean isValidTransportationOfTour(String transportationStr) {
+	private static boolean isValidTransportationOfTour(String transportationStr) {
 		try {
 			TypeOfTransportation.valueOf(transportationStr.toUpperCase());
 		} catch (IllegalArgumentException e) {
@@ -35,7 +41,7 @@ public class Validator {
 		return true;
 	}
 	
-	public static boolean isValidAmountOfDayOfTour(String amountOfDaysStr) {		
+	private static boolean isValidAmountOfDayOfTour(String amountOfDaysStr) {		
 		int amountOfDays;
 		try {
 			amountOfDays = Integer.valueOf(amountOfDaysStr);
@@ -45,12 +51,12 @@ public class Validator {
 		return amountOfDays > 0 ? true : false;
 	}
 	
-	public static boolean isValidFoodOfTour(String foodStr) {		
+	private static boolean isValidFoodOfTour(String foodStr) {		
 		
 		return ((foodStr.equals("yes") || foodStr.equals("no")) ? true : false);
 	}	
 	
-	public static boolean isValidPriceOfTour(String priceStr) {		
+	private static boolean isValidPriceOfTour(String priceStr) {		
 		BigDecimal bd;
 		try {
 			bd = new BigDecimal(priceStr);
@@ -60,6 +66,7 @@ public class Validator {
 		return (bd.compareTo(new BigDecimal("0")) >= 0 ? true : false);
 	}
 	
-	
-	
+	private static boolean isValidSpecificInfoOfTour(String infoStr) {
+		return !infoStr.isEmpty();
+	}	
 }

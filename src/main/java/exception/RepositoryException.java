@@ -1,4 +1,4 @@
-package util.exception;
+package exception;
 
 public class RepositoryException extends Exception {
 	

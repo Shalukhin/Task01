@@ -41,50 +41,7 @@ public class TourFactory {
 	
 	public Tour getTourWithXMLParameters(String parametersXML) {
 		
-		TypeOfTour type;
-		int id;
-		TypeOfTransportation transportation;
-		int amountOfDays;
-		boolean food;
-		BigDecimal price;		
 		
-		ArrayList<String> tagArray;
-		
-		tagArray = ParserText.getArrayTagsFromTextByName(parametersXML, "type");
-		if (tagArray.size() == 0 || !Validator.isValidTypeOfTour(tagArray.get(0))) {
-			return null;
-		}				
-		type = TypeOfTour.valueOf(tagArray.get(0).toUpperCase());
-		
-		tagArray = ParserText.getArrayTagsFromTextByName(parametersXML, "id");
-		if (tagArray.size() == 0 || !Validator.isValidIdOfTour(tagArray.get(0))) {
-			return null;
-		}				
-		id = Integer.valueOf(tagArray.get(0));
-		
-		tagArray = ParserText.getArrayTagsFromTextByName(parametersXML, "transportation");
-		if (tagArray.size() == 0 || !Validator.isValidTransportationOfTour(tagArray.get(0))) {
-			return null;
-		}				
-		transportation = TypeOfTransportation.valueOf(tagArray.get(0).toUpperCase());
-		
-		tagArray = ParserText.getArrayTagsFromTextByName(parametersXML, "amountOfDays");
-		if (tagArray.size() == 0 || !Validator.isValidAmountOfDayOfTour(tagArray.get(0))) {
-			return null;
-		}				
-		amountOfDays = Integer.valueOf(tagArray.get(0));
-		
-		tagArray = ParserText.getArrayTagsFromTextByName(parametersXML, "food");
-		if (tagArray.size() == 0 || !Validator.isValidFoodOfTour(tagArray.get(0))) {
-			return null;
-		}				
-		food = tagArray.get(0).equals("yes");
-		
-		tagArray = ParserText.getArrayTagsFromTextByName(parametersXML, "price");
-		if (tagArray.size() == 0 || !Validator.isValidPriceOfTour(tagArray.get(0))) {
-			return null;
-		}				
-		price = new BigDecimal(tagArray.get(0));
 		
 		Tour resultTour = new Tour();
 		

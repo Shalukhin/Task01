@@ -10,9 +10,9 @@ public class Excursion extends Tour {
 		super();		
 	}			
 
-	public Excursion(int id, TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
+	public Excursion(TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
 			BigDecimal price, String city) {
-		super(id, type, amountOfDays, transportation, food, price);
+		super(type, amountOfDays, transportation, food, price);
 		this.city = city;
 	}
 

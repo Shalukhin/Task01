@@ -6,23 +6,23 @@ import java.util.ArrayList;
 import entity.Client;
 import entity.Order;
 import entity.Tour;
+import exception.ServiceException;
 import factory.RepositoryFactory;
 import repository.EntityRepository;
 import repository.impl.TourRepository;
 import util.ConstantsText;
-import util.DriversFile;
+import util.ReaderFile;
 import util.ParserText;
-import util.exception.ServiceException;
 
 public class TravelAgencyService {
 	
 	private TourRepository tours = TourRepository.getInstance();
 	
-	public void refreashTourRepository() throws ServiceException {
+	public void refreashTourRepositoryFromFile() throws ServiceException {
 		
 		String tourBaseStr = "";
 		try {
-			tourBaseStr = DriversFile.extractTextFromFile(ConstantsText.LINK_TOURS);
+			tourBaseStr = ReaderFile.extractTextFromFile(ConstantsText.LINK_TOURS);
 		} catch (IOException e) {
 			throw new ServiceException("file_tours_error");
 		}

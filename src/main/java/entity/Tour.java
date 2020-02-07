@@ -3,8 +3,12 @@ package entity;
 import java.math.BigDecimal;
 
 public class Tour{
+	private static int counter;
+	{
+		counter++;
+	}
 
-	protected int id;
+	protected int id = counter;
 	protected TypeOfTour type;	
 	protected int amountOfDays;
 	protected TypeOfTransportation transportation;
@@ -15,10 +19,9 @@ public class Tour{
 		super();
 	}	
 	
-	public Tour(int id, TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
+	public Tour(TypeOfTour type, int amountOfDays, TypeOfTransportation transportation, boolean food,
 			BigDecimal price) {
 		super();
-		this.id = id;
 		this.type = type;
 		this.amountOfDays = amountOfDays;
 		this.transportation = transportation;

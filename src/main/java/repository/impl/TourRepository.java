@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import entity.Tour;
+import exception.RepositoryException;
 import repository.Repository;
 import util.Specification;
-import util.exception.RepositoryException;
 
 public class TourRepository implements Repository<Tour> {
 
